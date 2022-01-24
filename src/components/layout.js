@@ -1,6 +1,6 @@
 import * as React from "react"
 import "./Layout.scss"
-import NavBar from "./nav-bar"
+import NavBar from "./NavBar"
 
 export default function Layout({ children }) {
   return (

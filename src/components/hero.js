@@ -1,5 +1,4 @@
 import React from 'react'
-import { StaticImage } from "gatsby-plugin-image"
 import { hero, heroMain, heroImage, heroHeader, heroText, heroButton } from './hero.module.scss'
 export default function Hero() {
     return (
