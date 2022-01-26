@@ -1,4 +1,4 @@
-const path = require(`path`)
+const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -27,9 +27,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const templatePath = path.resolve(`src/templates/person.js`)
-
-
+  const templatePath = path.resolve('src/templates/person.js')
   result.data.allContentfulPerson.nodes.forEach((node) => {
     createPage({
       path: `crew/${node.slug}`,
