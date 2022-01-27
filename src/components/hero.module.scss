@@ -2,31 +2,10 @@
 
 .hero {
     text-align: center;
-    padding: 200px 0px;
-    background-color: rgba($color: $color-geranium-lake, $alpha: .7);
+    padding: 200px;
 }
 
 .hero-header {
-    font-size: 50px;
-    margin-bottom: 40px;
+   font-size: 60px;
 }
 
-.hero-subheader {
-    font-size: 18px;
-    max-width: 400px;
-    margin: 0 auto 20px auto;
-}
-
-.hero-button {
-    font-size: 20px;
-    color: $color-white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: $color-geranium-lake;
-    cursor: pointer;
-    transition: all 400ms ease;
-    &:hover {
-        background-color: $color-white;
-        color: $color-geranium-lake;
-    }
-}

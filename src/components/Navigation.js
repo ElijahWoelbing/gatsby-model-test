@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from "gatsby"
-import { nav, navItem } from "./NavBar.module.scss"
-export default function NavBar() {
+import { nav, navItem } from "./Navigation.module.scss"
+export default function Navigation() {
   const data = useStaticQuery(graphql`
     {
-      contentfulNavigationMenu {
-        navigationLink {
+      contentfulBlockNavigation(contentful_id: {eq: "2svumzaCuEtPRYHFmSWdf1"}) {
+        navigationLinks {
           url
           linkText
         }
@@ -15,7 +15,7 @@ export default function NavBar() {
 
   return (
     <div className={nav}>
-      {data.contentfulNavigationMenu.navigationLink.map((link, i) => {
+      {data.contentfulBlockNavigation.navigationLinks.map((link, i) => {
         return <Link className={navItem} to={link.url} key={i}>{link.linkText}</Link>
       })}
     </div>

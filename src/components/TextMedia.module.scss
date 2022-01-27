@@ -1,0 +1,25 @@
+@import '../styles/variables.scss';
+
+.text-media {
+ display: flex;
+ padding: 100px;
+ justify-content: center;
+ gap: 200px
+}
+.text-media-text {
+    max-width: 500px;
+}
+.text-media-header {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.text-media-body {
+    font-size: 16px;
+    line-height: 160%;
+    color: $color-grey;
+}
+.text-media-image {
+    img {
+        border-radius: 10px;
+    }
+}

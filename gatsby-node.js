@@ -4,33 +4,19 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const result = await graphql(`
-    {
-      allContentfulPerson {
-        nodes {
-          image {
-            gatsbyImageData
-          }
-          header
-          emailAddress
-          gitHubUrl
-          jobTitle
-          linkedInUrl
-          name
-          phoneNumber
-          slug
-          title
-          bio {
-            raw
-          }
-        }
+  {
+    allContentfulPage {
+      nodes {
+        slug
       }
     }
-  `)
+  }
+`)
 
-  const templatePath = path.resolve('src/templates/person.js')
-  result.data.allContentfulPerson.nodes.forEach((node) => {
+  const templatePath = path.resolve('src/templates/page.js')
+  result.data.allContentfulPage.nodes.forEach((node) => {
     createPage({
-      path: `crew/${node.slug}`,
+      path: node.slug,
       component: templatePath,
       context: {
         ...node

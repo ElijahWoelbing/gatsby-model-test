@@ -2,11 +2,10 @@ import React from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { convertToBgImage } from 'gbimage-bridge'
 import BackgroundImage from 'gatsby-background-image'
-import { hero, heroSubheader, heroHeader, heroButton } from './hero.module.scss'
+import { hero, heroHeader } from './hero.module.scss'
 export default function Hero({ data }) {
-  const image = getImage(data.backgroundImage);
+  const image = getImage(data.image);
   const bgImage = convertToBgImage(image);
-
   return (
     <BackgroundImage
       Tag="section"
@@ -19,10 +18,7 @@ export default function Hero({ data }) {
       preserveStackingContext
     >
       <div className={hero}>
-        <h1 className={heroHeader}>{data.headline}</h1>
-        {data.subHeader && <p className={heroSubheader}>{data.subHeader}</p>}
-        {data.ctaText && <button className={heroButton}>{data.ctaText}</button>
-        }
+        <h1 className={heroHeader}>{data.header}</h1>
       </div>
     </BackgroundImage>
   )

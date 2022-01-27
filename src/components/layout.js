@@ -1,12 +1,13 @@
-import * as React from "react"
-import "./Layout.scss"
-import NavBar from "./NavBar"
-
+import * as React from 'react'
+import './Layout.scss'
+import Navigation from './Navigation'
+import Footer from './Footer'
 export default function Layout({ children }) {
   return (
     <>
-      <NavBar />
+      <Navigation />
       {children}
+      <Footer />
     </>
   )
 
