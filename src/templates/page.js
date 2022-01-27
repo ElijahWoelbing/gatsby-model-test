@@ -15,14 +15,11 @@ function renderBlock(block) {
       return <CaseStudy data={block} />
     default:
       return <p>component not found</p>
-
   }
 
 }
 
 const Page = function ({ data }) {
-
-  console.log(data);
   const blocks = data.contentfulPage.blocks;
   console.log(blocks);
   return (
