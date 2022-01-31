@@ -2,7 +2,6 @@ import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import {textMedia, textMediaText, textMediaHeader, textMediaBody, textMediaImage} from './TextMedia.module.scss'
 export default function TextMedia({ data }) {
-    console.log(data);
     return (
         <div className={textMedia}>
             <div className={textMediaText}>
@@ -10,7 +9,7 @@ export default function TextMedia({ data }) {
                 <p className={textMediaBody}>{data.body.body}</p>
             </div>
             <div className={textMediaImage}>
-                <GatsbyImage image={getImage(data.image)} alt="" />
+                <GatsbyImage image={getImage(data.image)} alt='' />
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { nav, navItem } from "./Navigation.module.scss"
+import { Link, useStaticQuery, graphql } from 'gatsby'
+import { nav, navItem } from './Navigation.module.scss'
 export default function Navigation() {
   const data = useStaticQuery(graphql`
     {

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { footer, footerItem } from "./Footer.module.scss"
+import { Link, useStaticQuery, graphql } from 'gatsby'
+import { footer, footerItem } from './Footer.module.scss'
 export default function Footer() {
     const data = useStaticQuery(graphql`
     {

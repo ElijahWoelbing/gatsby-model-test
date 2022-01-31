@@ -2,12 +2,16 @@
 
 .text-media {
  display: flex;
- padding: 100px;
- justify-content: center;
- gap: 200px
+ padding: 100px 0;
+ justify-content: space-between;
+ align-items: center;
+ gap: 50px;
+ max-width: 1300px;
+ margin: 0 auto;
 }
 .text-media-text {
-    max-width: 500px;
+    flex: 0 1 500px;
+    min-width: 300px;
 }
 .text-media-header {
     font-size: 40px;

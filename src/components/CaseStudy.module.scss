@@ -3,6 +3,11 @@
     padding: 100px;
 }
 
+.card-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
 .card {
     background-color: $color-white;
     max-width: 500px;

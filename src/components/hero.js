@@ -1,5 +1,5 @@
 import React from 'react'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { getImage } from 'gatsby-plugin-image'
 import { convertToBgImage } from 'gbimage-bridge'
 import BackgroundImage from 'gatsby-background-image'
 import { hero, heroHeader } from './hero.module.scss'
@@ -8,7 +8,7 @@ export default function Hero({ data }) {
   const bgImage = convertToBgImage(image);
   return (
     <BackgroundImage
-      Tag="section"
+      Tag='section'
       style={{
         backgroundSize: 'cover',
         backgroundPosition: 'center',
