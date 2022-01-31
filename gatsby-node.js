@@ -24,3 +24,33 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+// removes css module import order warnings
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  if (stage === 'build-javascript' || stage === 'develop') {
+    const config = getConfig()
+    const miniCssExtractPlugin = config.plugins.find(
+      plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
+    )
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true
+    }
+    actions.replaceWebpackConfig(config)
+  }
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+  union ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion = ContentfulBlockCaseStudy | ContentfulBlockHero | ContentfulBlockTextMedia
+
+  type ContentfulPage implements Node {
+    blocks: [ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion] @link(by: "id", from: "blocks___NODE")
+  }
+
+  type ContentfulPageHome implements Node  {
+    blocks: [ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion] @link(by: "id", from: "blocks___NODE")
+  }
+  `
+  createTypes(typeDefs)
+}

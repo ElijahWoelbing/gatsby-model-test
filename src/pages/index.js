@@ -2,23 +2,28 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import { renderBlock } from '../scripts/render'
 import Layout from '../components/Layout'
+import Seo from '../components/Seo'
 import Hero from '../components/Hero'
-import SEO from '../components/SEO'
 
 const IndexPage = function ({ data }) {
   const { blocks } = data.contentfulPageHome;
   const { hero } = data.contentfulPageHome;
   return (
     <Layout>
-      <SEO title='Home Page' />
+      <Seo title='Home Page' />
       <Hero data={hero} />
-      {blocks.map((block, i) => {
-        return (
-          <div key={i}>
-            {renderBlock(block)}
-          </div>
-        )
-      })}
+      {blocks &&
+        <div>
+          {blocks.map((block, i) => {
+            return (
+              <div key={i}>
+                {renderBlock(block)}
+              </div>
+            )
+          })}
+        </div>
+      }
+
     </Layout>
   )
 }
@@ -28,14 +33,18 @@ export const query = graphql`
     contentfulPageHome {
       hero {
         backgroundImage {
-          gatsbyImageData
+          file {
+            url
+          }
         }
         header
       }
       blocks {
         ... on ContentfulBlockCaseStudy {
           backgroundImage {
-            gatsbyImageData
+            file {
+              url
+            }
           }
           body {
             body

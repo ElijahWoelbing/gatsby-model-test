@@ -14,5 +14,4 @@ export function renderBlock(block) {
         default:
             return <p>component not found</p>
     }
-
 }

@@ -1,7 +1,8 @@
-import * as React from 'react'
-import './Layout.scss'
+import React from 'react'
 import Navigation from './Navigation'
 import Footer from './Footer'
+import './Layout.module.scss'
+
 export default function Layout({ children }) {
   return (
     <>

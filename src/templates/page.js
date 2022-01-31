@@ -1,13 +1,11 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { renderBlock } from '../scripts/render'
-
 
 
 const Page = function ({ data }) {
   const blocks = data.contentfulPage.blocks;
-  console.log(blocks);
   return (
     <Layout>
       {blocks.map((block, i) => {
@@ -18,7 +16,6 @@ const Page = function ({ data }) {
         )
       })}
     </Layout>
-
   )
 }
 
@@ -34,7 +31,9 @@ query pageBlocks($slug: String) {
           body
         }
         backgroundImage {
-          gatsbyImageData
+          file {
+            url
+          }
         }
         header
       }
@@ -44,7 +43,9 @@ query pageBlocks($slug: String) {
         }
         header
         backgroundImage {
-          gatsbyImageData
+          file {
+            url
+          }
         }
       }
       ... on ContentfulBlockTextMedia {
