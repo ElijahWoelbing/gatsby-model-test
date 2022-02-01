@@ -1,5 +1,5 @@
 import React from 'react';
-import { caseStudy, cardContainer, card, cardHeader, cardBody } from './CaseStudy.module.scss'
+import { caseStudy, cardContainer, card, cardHeader, cardBody } from './CaseStudy.module.scss';
 export default function CaseStudy({ data }) {
   return (
     <div className={caseStudy} style={{

@@ -28,17 +28,19 @@ exports.createPages = async ({ graphql, actions }) => {
 // removes css module import order warnings
 exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   if (stage === 'build-javascript' || stage === 'develop') {
-    const config = getConfig()
+    const config = getConfig();
     const miniCssExtractPlugin = config.plugins.find(
       plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
-    )
+    );
     if (miniCssExtractPlugin) {
-      miniCssExtractPlugin.options.ignoreOrder = true
+      miniCssExtractPlugin.options.ignoreOrder = true;
     }
-    actions.replaceWebpackConfig(config)
+    actions.replaceWebpackConfig(config);
   }
 }
 
+// you can use a printTypeDefinitions function to print your data types, 
+// which you can then use to pre define the optional properties.
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
@@ -49,6 +51,10 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
 
   type ContentfulPageHome implements Node  {
+    blocks: [ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion] @link(by: "id", from: "blocks___NODE")
+  }
+
+  type ContentfulPageCrew implements Node  {
     blocks: [ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion] @link(by: "id", from: "blocks___NODE")
   }
   `

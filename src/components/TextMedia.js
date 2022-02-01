@@ -1,6 +1,6 @@
 import React from 'react';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import {textMedia, textMediaText, textMediaHeader, textMediaBody, textMediaImage} from './TextMedia.module.scss'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import {textMedia, textMediaText, textMediaHeader, textMediaBody, textMediaImage} from './TextMedia.module.scss';
 export default function TextMedia({ data }) {
     return (
         <div className={textMedia}>

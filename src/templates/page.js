@@ -1,20 +1,24 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import { graphql } from 'gatsby'
-import { renderBlock } from '../scripts/render'
+import React from 'react';
+import Layout from '../components/Layout';
+import { graphql } from 'gatsby';
+import { renderBlock } from '../scripts/render';
 
 
 const Page = function ({ data }) {
   const blocks = data.contentfulPage.blocks;
   return (
     <Layout>
-      {blocks.map((block, i) => {
-        return (
-          <div key={i}>
-            {renderBlock(block)}
-          </div>
-        )
-      })}
+      {blocks &&
+        <div>
+          {blocks.map((block, i) => {
+            return (
+              <div key={i}>
+                {renderBlock(block)}
+              </div>
+            )
+          })}
+        </div>
+      }
     </Layout>
   )
 }

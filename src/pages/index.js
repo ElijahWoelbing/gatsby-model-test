@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { renderBlock } from '../scripts/render'
-import Layout from '../components/Layout'
-import Seo from '../components/Seo'
-import Hero from '../components/Hero'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { renderBlock } from '../scripts/render';
+import Layout from '../components/Layout';
+import Seo from '../components/Seo';
+import Hero from '../components/Hero';
 
 const IndexPage = function ({ data }) {
   const { blocks } = data.contentfulPageHome;

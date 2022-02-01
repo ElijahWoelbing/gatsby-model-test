@@ -1,5 +1,5 @@
-import React from 'react'
-import { hero, heroHeader } from './Hero.module.scss'
+import React from 'react';
+import { hero, heroHeader } from './Hero.module.scss';
 export default function Hero({ data }) {
   return (
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import Hero from '../components/Hero'
-import TextMedia from '../components/TextMedia'
-import CaseStudy from '../components/CaseStudy'
+import Hero from '../components/Hero';
+import TextMedia from '../components/TextMedia';
+import CaseStudy from '../components/CaseStudy';
 
 export function renderBlock(block) {
     switch (block.internal.type) {
