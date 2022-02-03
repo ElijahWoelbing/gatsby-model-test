@@ -1,0 +1,11 @@
+@import "../styles/variables.scss";
+
+.radio-buttons {
+    background-color: $color-grey;
+    text-align: center;
+    color: $color-white;
+}
+
+.radio-button {
+    margin: 20px 50px;
+}

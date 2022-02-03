@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import { renderBlock } from '../scripts/render';
-
+import { useLocale } from '../components/LocaleProvider';
 
 const Page = function ({ data }) {
   const blocks = data.contentfulPage.blocks;

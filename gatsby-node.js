@@ -3,7 +3,7 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const result = await graphql(`
+  const pages = await graphql(`
   {
     allContentfulPage {
       nodes {
@@ -13,16 +13,37 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 `)
 
-  const templatePath = path.resolve('src/templates/page.js')
-  result.data.allContentfulPage.nodes.forEach((node) => {
+  const pageTemplatePath = path.resolve('src/templates/page.js')
+  pages.data.allContentfulPage.nodes.forEach((node) => {
     createPage({
       path: node.slug,
-      component: templatePath,
+      component: pageTemplatePath,
       context: {
         ...node
       },
     })
   })
+
+  const personPages = await graphql(`
+  {
+    allContentfulPagePerson {
+      nodes {
+        slug
+      }
+    }
+  }
+  `)
+  const personTemplatePath = path.resolve('src/templates/person.js');
+  personPages.data.allContentfulPagePerson.nodes.forEach((node) => {
+    createPage({
+      path: `crew/${node.slug}`,
+      component: personTemplatePath,
+      context: {
+        ...node
+      },
+    })
+  })
+
 }
 
 // removes css module import order warnings
