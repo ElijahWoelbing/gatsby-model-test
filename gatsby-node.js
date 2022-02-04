@@ -65,18 +65,18 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-  union ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion = ContentfulBlockCaseStudy | ContentfulBlockHero | ContentfulBlockTextMedia
+  union Blocks = ContentfulBlockCaseStudy | ContentfulBlockHero | ContentfulBlockTextMedia
 
   type ContentfulPage implements Node {
-    blocks: [ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion] @link(by: "id", from: "blocks___NODE")
+    blocks: [Blocks] @link(by: "id", from: "blocks___NODE")
   }
 
   type ContentfulPageHome implements Node  {
-    blocks: [ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion] @link(by: "id", from: "blocks___NODE")
+    blocks: [Blocks] @link(by: "id", from: "blocks___NODE")
   }
 
   type ContentfulPageCrew implements Node  {
-    blocks: [ContentfulBlockCaseStudyContentfulBlockHeroContentfulBlockTextMediaUnion] @link(by: "id", from: "blocks___NODE")
+    blocks: [Blocks] @link(by: "id", from: "blocks___NODE")
   }
   `
   createTypes(typeDefs)

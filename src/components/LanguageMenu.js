@@ -1,12 +1,11 @@
 import React from 'react';
 import { radioButtons, radioButton } from './LanguageMenu.module.scss';
-import { useLocaleUpdate } from './LocaleProvider';
+import { useLocale } from '../state/LocaleProvider';
 export default function LanguageMenu() {
-    let updateLanguge = useLocaleUpdate();
-        return (
+    const { changeLocale } = useLocale();
+    return (
         <div className={radioButtons} onChange={(e) => {
-            let locale = e.target.value;
-            updateLanguge(locale);
+            changeLocale(e.target.value);
         }}>
             <label htmlFor='english'>English</label>
             <input className={radioButton} type='radio' value='en-US' name="locale" defaultChecked />

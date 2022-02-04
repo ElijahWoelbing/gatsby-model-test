@@ -2,10 +2,17 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import { renderBlock } from '../scripts/render';
-import { useLocale } from '../components/LocaleProvider';
+import { useLocale } from '../state/LocaleProvider';
 
 const Page = function ({ data }) {
-  const blocks = data.contentfulPage.blocks;
+  let { locale } = useLocale();
+  let pages = data.allContentfulPage.nodes;
+  let [page] = pages.filter((p) => {
+    return p.node_locale === locale.locale;
+  });
+
+  const blocks = page.blocks;
+
   return (
     <Layout>
       {blocks &&
@@ -25,45 +32,49 @@ const Page = function ({ data }) {
 
 export const query = graphql`
 query pageBlocks($slug: String) {
-  contentfulPage(slug: {eq: $slug}) {
-    blocks {
-      ... on ContentfulBlockCaseStudy {
-        internal {
-          type
-        }
-        body {
-          body
-        }
-        backgroundImage {
-          file {
-            url
+  allContentfulPage(filter: {slug: {eq: $slug}}) {
+      nodes {
+        node_locale
+        id
+        blocks {
+          ... on ContentfulBlockCaseStudy {
+            internal {
+              type
+            }
+            body {
+              body
+            }
+            backgroundImage {
+              file {
+                url
+              }
+            }
+            header
+          }
+          ... on ContentfulBlockHero {
+            internal {
+              type
+            }
+            header
+            backgroundImage {
+              file {
+                url
+              }
+            }
+          }
+          ... on ContentfulBlockTextMedia {
+            internal {
+              type
+            }
+            header
+            body {
+              body
+            }
+            image {
+              gatsbyImageData(width: 500)
+            }
           }
         }
-        header
-      }
-      ... on ContentfulBlockHero {
-        internal {
-          type
-        }
-        header
-        backgroundImage {
-          file {
-            url
-          }
-        }
-      }
-      ... on ContentfulBlockTextMedia {
-        internal {
-          type
-        }
-        header
-        body {
-          body
-        }
-        image {
-          gatsbyImageData(width: 500)
-        }
-      }
     }
   }
 }
