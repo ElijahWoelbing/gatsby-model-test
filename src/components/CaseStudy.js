@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { caseStudy, cardContainer, card, cardHeader, cardBody } from './CaseStudy.module.scss';
 export default function CaseStudy({ data }) {
   return (
@@ -15,3 +16,23 @@ export default function CaseStudy({ data }) {
     </div>
   );
 }
+
+export const query = graphql`
+fragment CaseStudyData on ContentfulBlockCaseStudy {
+  internal {
+    type
+  }
+  body {
+    body
+  }
+  backgroundImage {
+    file {
+      url
+    }
+  }
+  header
+}
+`;
+
+
+

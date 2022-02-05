@@ -37,43 +37,11 @@ query pageBlocks($slug: String) {
         node_locale
         id
         blocks {
-          ... on ContentfulBlockCaseStudy {
-            internal {
-              type
-            }
-            body {
-              body
-            }
-            backgroundImage {
-              file {
-                url
-              }
-            }
-            header
-          }
-          ... on ContentfulBlockHero {
-            internal {
-              type
-            }
-            header
-            backgroundImage {
-              file {
-                url
-              }
-            }
-          }
-          ... on ContentfulBlockTextMedia {
-            internal {
-              type
-            }
-            header
-            body {
-              body
-            }
-            image {
-              gatsbyImageData(width: 500)
-            }
-          }
+          ...CaseStudyData
+          ...HeroData
+          ...TextMediaData
+          ...RollupData
+          ...HeaderTextData
         }
     }
   }

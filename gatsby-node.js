@@ -4,10 +4,23 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const pages = await graphql(`
+  fragment ParentPages on ContentfulPage {
+    parentPage {
+      slug
+      parentPage {
+        slug
+        parentPage {
+          slug
+        }
+      }
+    }
+  }
+
   {
     allContentfulPage {
       nodes {
         slug
+        ...ParentPages
       }
     }
   }
@@ -15,35 +28,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pageTemplatePath = path.resolve('src/templates/page.js')
   pages.data.allContentfulPage.nodes.forEach((node) => {
+    let parent = node.parentPage;
+    let slug = node.slug;
+    while (parent) {
+      slug = `${parent.slug}/${slug}`
+      console.log(slug);
+      parent = parent.parentPage;
+    }
+
     createPage({
-      path: node.slug,
+      path: slug,
       component: pageTemplatePath,
       context: {
         ...node
       },
     })
   })
-
-  const personPages = await graphql(`
-  {
-    allContentfulPagePerson {
-      nodes {
-        slug
-      }
-    }
-  }
-  `)
-  const personTemplatePath = path.resolve('src/templates/person.js');
-  personPages.data.allContentfulPagePerson.nodes.forEach((node) => {
-    createPage({
-      path: `crew/${node.slug}`,
-      component: personTemplatePath,
-      context: {
-        ...node
-      },
-    })
-  })
-
 }
 
 // removes css module import order warnings
@@ -65,18 +65,20 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-  union Blocks = ContentfulBlockCaseStudy | ContentfulBlockHero | ContentfulBlockTextMedia
+  
+  union PageBlocks = ContentfulBlockCaseStudy | ContentfulBlockHero | ContentfulBlockTextMedia | ContentfulBlockRollup | ContentfulBlockHeaderText
+
 
   type ContentfulPage implements Node {
-    blocks: [Blocks] @link(by: "id", from: "blocks___NODE")
+    blocks: [PageBlocks] @link(by: "id", from: "blocks___NODE")
   }
 
   type ContentfulPageHome implements Node  {
-    blocks: [Blocks] @link(by: "id", from: "blocks___NODE")
+    blocks: [PageBlocks ] @link(by: "id", from: "blocks___NODE")
   }
 
-  type ContentfulPageCrew implements Node  {
-    blocks: [Blocks] @link(by: "id", from: "blocks___NODE")
+  type ContentfulBlockRollup implements Node  {
+    blocks: [ContentfulBlockRollupItem] @link(by: "id", from: "blocks___NODE")
   }
   `
   createTypes(typeDefs)

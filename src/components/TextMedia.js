@@ -1,6 +1,7 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import {textMedia, textMediaText, textMediaHeader, textMediaBody, textMediaImage} from './TextMedia.module.scss';
+import { textMedia, textMediaText, textMediaHeader, textMediaBody, textMediaImage } from './TextMedia.module.scss';
 export default function TextMedia({ data }) {
     return (
         <div className={textMedia}>
@@ -14,3 +15,19 @@ export default function TextMedia({ data }) {
         </div>
     );
 }
+
+
+export const query = graphql`
+fragment TextMediaData on ContentfulBlockTextMedia {
+    internal {
+      type
+    }
+    header
+    body {
+      body
+    }
+    image {
+      gatsbyImageData(width: 500)
+    }
+  }
+`;

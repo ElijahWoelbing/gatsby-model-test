@@ -1,14 +1,32 @@
 import React from 'react';
+import { graphql, Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { avatar, avatarImage, avatarName, avatarJobTitle } from './Avatar.module.scss';
+import { avatar, avatarImage, avatarHeader, avatarSubHeader } from './Avatar.module.scss';
 export default function Avatar({ data }) {
     return (
-        <div className={avatar}>
-            <div >
-                <GatsbyImage className={avatarImage} image={getImage(data.headshot)} alt='' />
+        <Link to={data.linkedPageSlug}>
+            <div className={avatar}>
+                <div >
+                    <GatsbyImage className={avatarImage} image={getImage(data.image)} alt='' />
+                </div>
+                <h2 className={avatarHeader}>{data.header}</h2>
+                <div className={avatarSubHeader}>{data.subHeader}</div>
             </div>
-            <h2 className={avatarName}>{`${data.firstName} ${data.lastName}`}</h2>
-            <div className={avatarJobTitle}>{data.jobTitle}</div>
-        </div>
+        </Link>
+
     )
 }
+
+export const query = graphql`
+fragment AvatarData on ContentfulBlockAvatar {
+    internal {
+      type
+    }
+    header
+    image {
+      gatsbyImageData
+    }
+    subHeader
+    linkedPageSlug
+  }
+`;

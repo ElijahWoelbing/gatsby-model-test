@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { hero, heroHeader } from './Hero.module.scss';
 export default function Hero({ data }) {
   return (
@@ -6,7 +7,24 @@ export default function Hero({ data }) {
       backgroundImage: `url(${data.backgroundImage.file.url})`,
       backgroundSize: 'cover'
     }}>
-      <h1 className={heroHeader}>{data.header}</h1>
+      <h1 className={heroHeader} style={{
+        textAlign: data.headerAlignment,
+      }}>{data.header}</h1>
     </div>
   )
 }
+
+export const query = graphql`
+fragment HeroData on ContentfulBlockHero {
+  internal {
+    type
+  }
+  header
+  headerAlignment
+  backgroundImage {
+    file {
+      url
+    }
+  }
+}
+`;

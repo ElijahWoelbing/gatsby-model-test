@@ -1,0 +1,23 @@
+@import '../styles/variables.scss';
+
+.blog {
+    display: flex;
+}
+
+.blog-image {
+    border-radius: 5px;
+}
+
+.blog-text {
+    margin-left: 50px;
+    max-width: 400px;
+}
+
+.blog-header {
+    margin: 40px 0;
+}
+
+.blog-sub-header {
+    font-weight: 100;
+    color: $color-grey;
+}
