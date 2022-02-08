@@ -2,15 +2,16 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Avatar from './Avatar'
 import Blog from './Blog';
-import { rollup, rollupBlock } from './Rollup.module.scss'
+import { rollup, rollupItem } from './Rollup.module.scss'
 export default function Rollup({ data }) {
     const { layout } = data;
     return (
         <div className={rollup}>
+
             {
                 data.blocks.map((block, i) => {
                     return (
-                        <div className={rollupBlock} key={i}>
+                        <div className={rollupItem} key={i}>
                             {layout === 'avatar' ? (
                                 <Avatar data={block} />
                             ) : layout === 'blog' ? (
@@ -20,6 +21,7 @@ export default function Rollup({ data }) {
                     )
                 })
             }
+
         </div>
     )
 }

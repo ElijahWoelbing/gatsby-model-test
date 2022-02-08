@@ -17,7 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   {
-    allContentfulPage {
+    allContentfulPage(filter: {node_locale: {eq: "en-US"}}) {
       nodes {
         slug
         ...ParentPages
@@ -32,7 +32,6 @@ exports.createPages = async ({ graphql, actions }) => {
     let slug = node.slug;
     while (parent) {
       slug = `${parent.slug}/${slug}`
-      console.log(slug);
       parent = parent.parentPage;
     }
 

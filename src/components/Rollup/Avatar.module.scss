@@ -1,11 +1,11 @@
-@import '../styles/variables.scss';
-
+@import 'src/styles/variables.scss';
 .avatar {
     text-align: center;
 }
 
 .avatar-image {
     border-radius: 100%;
+    max-width: 300px;
 }
 
 .avatar-header {

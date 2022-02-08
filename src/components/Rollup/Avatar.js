@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { avatar, avatarImage, avatarHeader, avatarSubHeader } from './Avatar.module.scss';
 export default function Avatar({ data }) {
@@ -17,16 +17,3 @@ export default function Avatar({ data }) {
     )
 }
 
-export const query = graphql`
-fragment AvatarData on ContentfulBlockAvatar {
-    internal {
-      type
-    }
-    header
-    image {
-      gatsbyImageData
-    }
-    subHeader
-    linkedPageSlug
-  }
-`;

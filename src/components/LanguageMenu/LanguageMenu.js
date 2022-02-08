@@ -1,6 +1,6 @@
 import React from 'react';
 import { radioButtons, radioButton } from './LanguageMenu.module.scss';
-import { useLocale } from '../state/LocaleProvider';
+import { useLocale } from '../LocaleProvider.js';
 export default function LanguageMenu() {
     const { changeLocale } = useLocale();
     return (
