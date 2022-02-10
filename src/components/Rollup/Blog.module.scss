@@ -3,21 +3,23 @@
 .blog {
     display: flex;
     align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 20px;
+    height: 100%;
 }
 
 .blog-image {
     border-radius: 5px;
-    min-width: 100px;
 }
 
 .blog-text {
     margin-left: 50px;
-    max-width: 400px;
-    min-width: 200px;
 }
 
 .blog-header {
-    margin: 40px 0;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 .blog-sub-header {

@@ -1,10 +1,20 @@
-.rollup {
-    display: grid;
-    grid-template-columns:  repeat(3, 1fr);
-    grid-gap: 50px;
+.rollup-container {
     padding: 100px;
 }
 
-.rollup-item {
+.rollup-header {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 35px;
+}
 
+.rollup {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 100px;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.rollup-item {
 }

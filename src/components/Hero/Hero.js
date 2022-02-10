@@ -9,6 +9,7 @@ export default function Hero({ data }) {
     }}>
       <h1 className={heroHeader} style={{
         textAlign: data.headerAlignment,
+        color: data.headerColor
       }}>{data.header}</h1>
     </div>
   )
@@ -21,6 +22,7 @@ fragment HeroData on ContentfulBlockHero {
   }
   header
   headerAlignment
+  headerColor
   backgroundImage {
     file {
       url

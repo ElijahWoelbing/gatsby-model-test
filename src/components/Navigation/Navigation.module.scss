@@ -1,18 +1,52 @@
-@import 'src/styles/variables.scss';
 .nav {
-    background-color: $color-maya-blue;
-    text-align: right;
-    font-family: Heebo;
-    font-weight: bold;
-    font-size: 20px;
-    color: black;
     padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 33px;
+}
+
+.nav-items {
+    text-align: left;
 }
 
 .nav-item {
     margin-left: 33px;
 }
 
-.nav-item:last-child {
-    margin-right: 60px;
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    background-color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-button {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    background-color: white;
+    padding: 10px;
+}
+
+.dropdown-button:hover {
+    background-color: lightgray;
+}
+
+.dropdown-item + .dropdown-item {
+    margin-top: 10px;
 }
